@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet private var answerLabel: UILabel!
     @IBOutlet private var slider: UISlider!
 
+    private var correctAnswer = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
@@ -19,8 +21,7 @@ class ViewController: UIViewController {
 
     @IBAction private func tappedJudgeButton(_ sender: Any) {
         let numberSlider: Int = Int(slider.value)
-        let numberAnswerLabel: Int = Int(answerLabel.text ?? "") ?? 0
-        if numberSlider == numberAnswerLabel {
+        if numberSlider == correctAnswer {
             judgeAlert(judge: "当たり", numberSlider: numberSlider)
         } else {
             judgeAlert(judge: "はずれ", numberSlider: numberSlider)
@@ -28,7 +29,8 @@ class ViewController: UIViewController {
     }
 
     private func setInit() {
-        answerLabel.text = String(Int.random(in: 0..<101))
+        correctAnswer = Int.random(in: 1...100)
+        answerLabel.text = String(correctAnswer)
         slider.value = 50
     }
 
