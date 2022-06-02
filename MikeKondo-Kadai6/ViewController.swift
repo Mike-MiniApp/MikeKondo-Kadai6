@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     @IBOutlet private var answerLabel: UILabel!
     @IBOutlet private var slider: UISlider!
+    private var correctAnswer: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class ViewController: UIViewController {
     }
 
     private func setInit() {
-        answerLabel.text = String(Int.random(in: 0..<101))
+        correctAnswer = Int.random(in: 1...100)
+        answerLabel.text = String(correctAnswer)
         slider.value = 50
     }
 
